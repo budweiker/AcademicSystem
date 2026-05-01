@@ -1,6 +1,5 @@
 package cesde.domain;
 
-import java.util.List;
 import java.util.Scanner;
 
 public class Student {
@@ -20,9 +19,7 @@ public class Student {
     //Constructores
 
     public Student(){
-
     }
-
     public Student(String email){
         this.email = email;
     }

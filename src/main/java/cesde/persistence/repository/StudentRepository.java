@@ -1,13 +1,13 @@
-package cesde.repository;
+package cesde.persistence.repository;
 
 import cesde.domain.Student;
+import cesde.service.portOutput.StudentPersistencePort;
 
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class StudentRepository {
+public class StudentRepository implements StudentPersistencePort {
 
     List<Student> students = new ArrayList<>();
 

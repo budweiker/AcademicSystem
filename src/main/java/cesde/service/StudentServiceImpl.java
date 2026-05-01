@@ -1,7 +1,8 @@
 package cesde.service;
 
 import cesde.domain.Student;
-import cesde.repository.StudentRepository;
+import cesde.persistence.repository.StudentRepository;
+import cesde.service.portInput.StudentService;
 import cesde.util.TypeValidator;
 
 import java.util.List;
