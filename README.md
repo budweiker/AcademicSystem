@@ -1,4 +1,4 @@
-![Diagrama DER](docs/diagrama_tablas_2.png)
+![Diagrama DER](assets/diagrama_Tablas_2.svg)
 # AcademicSystem
 Momento I de la materia BackEnd
 **Autor:** Andrés Felipe Orozco  
