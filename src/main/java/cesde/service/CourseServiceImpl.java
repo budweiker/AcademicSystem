@@ -3,6 +3,7 @@ package cesde.service;
 import cesde.domain.Course;
 import cesde.persistence.repository.CourseRepository;
 import cesde.service.portInput.CourseService;
+import cesde.util.TypeValidator;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,14 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public Course createCourse(Course course) {
-        return repo.createCourseRepository(course);
+        Course newCourse = new Course();
+
+        newCourse.setCourseId(TypeValidator.validateInt("Ingrese el id del curso"));
+        newCourse.setName(TypeValidator.validateString("Ingrese el nombre del curso"));
+        //newCourse.setSchoolId(TypeValidator.validateInt("Ingrese el id de la escuela");
+        //newCourse.setTeacherId(TypeValidator.validateInt("Ingrese el id del profesor"));
+
+        return repo.createCourseRepository(newCourse);
     }
 
     @Override

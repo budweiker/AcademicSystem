@@ -9,6 +9,11 @@ public class Course {
     private Date endDate;
 
     //constructor
+
+
+    public Course() {
+    }
+
     public Course(int courseId, String name, Date startDate, Date endDate) {
         this.courseId = courseId;
         this.name = name;

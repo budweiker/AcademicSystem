@@ -3,10 +3,11 @@ package cesde.persistence.repository;
 
 import cesde.domain.Course;
 import cesde.service.portInput.CourseService;
+import cesde.service.portOutput.CoursePersistencePort;
 
 import java.util.ArrayList;
 
-public class CourseRepository implements CourseService {
+public class CourseRepository implements CoursePersistencePort {
     ArrayList<Course> courses = new ArrayList<>();
 
     public Course createCourseRepository(Course course) {
@@ -36,6 +37,7 @@ public class CourseRepository implements CourseService {
     }
 
     public void deleteCourseRepository(int id) {
+
         courses.removeIf(c -> c.getCourseId() == id);
     }
 }
