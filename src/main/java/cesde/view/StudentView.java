@@ -27,9 +27,7 @@ public class StudentView {
 
     public void getStudentById(int id){
 
-
         studentServiceImpl.getStudentById(id);
-
 
     }
 
@@ -45,7 +43,6 @@ public class StudentView {
     }
 
     public void deleteStudent(int id){
-            System.out.println("estoy en el view");
             studentServiceImpl.deleteStudent(id);
     }
 

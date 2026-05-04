@@ -77,8 +77,8 @@ public class StudentServiceImpl implements StudentService {
         Student student = studentRepository.getStudentById(id);
 
         if (id == student.getId()) {
-            System.out.println("id:" + student.getId() + "\n" +
-                    "Nombre:" + student.getName() + "\n" +
+            System.out.println("id: " + student.getId() + "\n" +
+                    "Nombre: " + student.getName() + "\n" +
                     "Apellido " + student.getLastName() + "\n" +
                     "email: " + student.getEmail() + "\n" +
                     "Status: " + student.isStatus());
@@ -96,7 +96,6 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public void deleteStudent(int id) {
-        System.out.println("Estoy en el service");
         studentRepository.deleteStudentRepository(id);
     }
 
