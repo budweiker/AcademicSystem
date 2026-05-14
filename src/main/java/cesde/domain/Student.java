@@ -19,7 +19,7 @@ public class Student extends User{
         super();
     }
 
-    public Student(int id, String name, String lastName, String email, String phone, String password, boolean status, String studentType) {
+    public Student(int id, String name, String lastName, String email, String phone, String password, String status, String studentType) {
         super(id, name, lastName, email, phone, password, status);
         this.studentType = studentType;
     }

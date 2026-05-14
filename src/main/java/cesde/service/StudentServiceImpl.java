@@ -3,6 +3,7 @@ package cesde.service;
 import cesde.domain.Student;
 import cesde.persistence.repository.StudentRepository;
 import cesde.service.portInput.StudentService;
+import cesde.service.portOutput.StudentPersistencePort;
 import cesde.util.TypeValidator;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.Optional;
 public class StudentServiceImpl implements StudentService {
 
     private final StudentRepository studentRepository;
+    //private final StudentPersistencePort studentPersistencePort;
 
     public StudentServiceImpl( StudentRepository studentRepository){
 
@@ -25,8 +27,9 @@ public class StudentServiceImpl implements StudentService {
         student.setId(TypeValidator.validateInt("Ingrese el id del estudiante"));
         student.setName(TypeValidator.validateString("Ingrese el Nombre del Estudiante"));
         student.setLastName(TypeValidator.validateString("Ingrese el apellido del estudiante"));
+        student.setPhone(TypeValidator.validateString("Ingrese un número de teléfono valido"));
         student.setEmail(TypeValidator.validateString("Ingrese un email valido"));
-        student.setStatus(TypeValidator.validateBoolean("Seleccione un estado"));
+        student.setStatus(TypeValidator.validateString("Seleccione un estado"));
 
         return studentRepository.createStudentRepository(student);
     }
@@ -60,7 +63,7 @@ public class StudentServiceImpl implements StudentService {
                     student.setEmail(TypeValidator.validateString("Actualizar Email"));
                     break;
                 case 5:
-                    student.setStatus(TypeValidator.validateBoolean("Actualizar Estado"));
+                    student.setStatus(TypeValidator.validateString("Actualizar Estado"));
                     break;
                 default:
                     System.out.println("Seleccione una opción valida");
@@ -81,7 +84,7 @@ public class StudentServiceImpl implements StudentService {
                     "Nombre: " + student.getName() + "\n" +
                     "Apellido " + student.getLastName() + "\n" +
                     "email: " + student.getEmail() + "\n" +
-                    "Status: " + student.isStatus());
+                    "Status: " + student.getStatus());
         } else {
             System.out.println("Id no encontrado");
         }

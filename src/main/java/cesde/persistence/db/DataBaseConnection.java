@@ -9,7 +9,7 @@ public class DataBaseConnection {
     private final Connection connection;
 
 
-    private static final String url = "jdbc:mysql://localhost:3306/storeapp";
+    private static final String url = "jdbc:mysql://localhost:3306/academic_system";
     private static final String username = "root";
     private static final String password ="";
 

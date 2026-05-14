@@ -1,6 +1,7 @@
 package cesde.userinterface;
 
 import cesde.domain.Student;
+import cesde.persistence.db.DataBaseConnection;
 import cesde.util.TypeValidator;
 import cesde.view.StudentView;
 
@@ -26,6 +27,8 @@ public class MenuApp {
        sc.nextLine();
 
        while(init != 0){
+
+           DataBaseConnection.getInstance().getConnection();
 
            System.out.println("Seleccione una opción 1. Registro 2. Inicio de Sesion 3. Salir ");
 

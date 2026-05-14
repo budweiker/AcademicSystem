@@ -7,12 +7,12 @@ public class User {
     private String email;
     private String phone;
     private String password;
-    private boolean status;
+    private String status;
 
     public User() {
     }
 
-    public User(int id, String name, String lastName, String email, String phone, String password, boolean status) {
+    public User(int id, String name, String lastName, String email, String phone, String password, String status) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -70,11 +70,11 @@ public class User {
         this.password = password;
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }
