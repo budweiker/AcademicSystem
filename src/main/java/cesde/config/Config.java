@@ -1,6 +1,7 @@
 package cesde.config;
 
-import cesde.persistence.repository.StudentRepository;
+import cesde.domain.Student;
+import cesde.repository.StudentRepository;
 import cesde.service.StudentServiceImpl;
 import cesde.userinterface.MenuApp;
 import cesde.view.StudentView;

@@ -9,7 +9,7 @@ public class Teacher extends User {
         super();
     }
 
-    public Teacher(int id, String name, String lastName, String email, String phone, String password, boolean status, String speciality) {
+    public Teacher(int id, String name, String lastName, String email, String phone, String password, String status, String speciality) {
         super(id, name, lastName, email, phone, password, status);
         this.speciality = speciality;
     }

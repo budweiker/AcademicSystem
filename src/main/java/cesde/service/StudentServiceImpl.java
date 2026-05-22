@@ -2,8 +2,8 @@ package cesde.service;
 
 import cesde.domain.Student;
 import cesde.persistence.repository.StudentRepository;
-import cesde.service.portInput.StudentService;
-import cesde.service.portOutput.StudentPersistencePort;
+import cesde.service.portinput.StudentService;
+import cesde.service.portoutput.StudentPersistencePort;
 import cesde.util.TypeValidator;
 
 import java.util.List;
@@ -11,12 +11,10 @@ import java.util.Optional;
 
 public class StudentServiceImpl implements StudentService {
 
-    private final StudentRepository studentRepository;
-    //private final StudentPersistencePort studentPersistencePort;
+    private final StudentPersistencePort studentPersistencePort;
 
-    public StudentServiceImpl( StudentRepository studentRepository){
-
-        this.studentRepository= studentRepository;// Esto es una inyeccion de dependencias
+    public StudentServiceImpl(StudentPersistencePort studentPersistencePort) {
+        this.studentPersistencePort = studentPersistencePort;
     }
 
     @Override
@@ -27,17 +25,20 @@ public class StudentServiceImpl implements StudentService {
         student.setId(TypeValidator.validateInt("Ingrese el id del estudiante"));
         student.setName(TypeValidator.validateString("Ingrese el Nombre del Estudiante"));
         student.setLastName(TypeValidator.validateString("Ingrese el apellido del estudiante"));
-        student.setPhone(TypeValidator.validateString("Ingrese un número de teléfono valido"));
+        student.setPhone(TypeValidator.validateString("Ingrese un numero de telefono valido"));
         student.setEmail(TypeValidator.validateString("Ingrese un email valido"));
+        student.setPassword(TypeValidator.validateString("Ingrese una contraseña valida"));
         student.setStatus(TypeValidator.validateString("Seleccione un estado"));
+        student.setStudentType(TypeValidator.validateString("Seleccione un tipo de estudiante"));
 
-        return studentRepository.createStudentRepository(student);
+
+        return studentPersistencePort.createStudentRepository(student);
     }
 
     @Override
     public Student updateStudentService(int id){
 
-        Student student = studentRepository.getStudentById(id);
+        Student student = studentPersistencePort.getStudentById(id);
 
         if(id == student.getId()){
             System.out.println("Seleccione el dato a actualizar \n" +
@@ -77,11 +78,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public Optional<Student> getStudentById(int id) {
 
-        Student student = studentRepository.getStudentById(id);
+        Student student = studentPersistencePort.getStudentById(id);
 
         if (id == student.getId()) {
-            System.out.println("id: " + student.getId() + "\n" +
-                    "Nombre: " + student.getName() + "\n" +
+            System.out.println("id:" + student.getId() + "\n" +
+                    "Nombre:" + student.getName() + "\n" +
                     "Apellido " + student.getLastName() + "\n" +
                     "email: " + student.getEmail() + "\n" +
                     "Status: " + student.getStatus());
@@ -94,12 +95,13 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public List<Student> getAllStudents() {
-        return studentRepository.getAllStudents();
+        return studentPersistencePort.getAllStudents();
     }
 
     @Override
     public void deleteStudent(int id) {
-        studentRepository.deleteStudentRepository(id);
+        System.out.println("Estoy en el service");
+        studentPersistencePort.deleteStudentRepository(id);
     }
 
 }

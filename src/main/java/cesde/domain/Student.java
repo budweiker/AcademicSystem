@@ -1,10 +1,10 @@
 package cesde.domain;
 
+import java.util.List;
 import java.util.Scanner;
 
-public class Student extends User{
+public class Student extends User {
 
-    Scanner sc = new Scanner(System.in);
 
     // POJO - Plain Old Java Object
 

@@ -1,10 +1,11 @@
 package cesde.util;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class TypeValidator {
 
-    static Scanner sc = new Scanner(System.in);
+    private static final Scanner sc = new Scanner(System.in);
 
     public static int validateInt(String promt) {
 
@@ -15,7 +16,7 @@ public class TypeValidator {
                 sc.nextLine();
                 return value;
 
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Ingrese un numero entero");
                 sc.nextLine();
                 }
@@ -32,7 +33,7 @@ public class TypeValidator {
                 sc.nextLine();
                 return value;
 
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Ingrese un numero decimal");
                 sc.nextLine();
             }
@@ -49,7 +50,7 @@ public class TypeValidator {
                 sc.nextLine();
                 return value;
 
-            } catch (Exception e) {
+            } catch (InputMismatchException e) {
                 System.out.println("Ingrese un valor logico");
                 sc.nextLine();
             }

@@ -1,6 +1,7 @@
 package cesde.domain;
 
 public class User {
+
     private int id;
     private String name;
     private String lastName;
@@ -9,8 +10,10 @@ public class User {
     private String password;
     private String status;
 
+
     public User() {
     }
+
 
     public User(int id, String name, String lastName, String email, String phone, String password, String status) {
         this.id = id;
@@ -21,6 +24,7 @@ public class User {
         this.password = password;
         this.status = status;
     }
+
 
     public int getId() {
         return id;
