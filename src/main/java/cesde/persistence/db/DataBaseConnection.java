@@ -13,13 +13,18 @@ public class DataBaseConnection {
     private static final String username = "root";
     private static final String password ="";
 
-    private DataBaseConnection(){
+    private DataBaseConnection() {
+
         try{
+
             connection = DriverManager.getConnection(url, username, password);
             System.out.println("Conexión a la base de datos establecida");
         } catch (SQLException e) {
+
+            throw new RuntimeException("Error al conectar a la base de datos", e);
         }
     }
+
 
     public static synchronized DataBaseConnection getInstance(){
         if (instance == null){

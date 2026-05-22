@@ -10,13 +10,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Optional;
 
 public class StudentRepositoryDB implements StudentPersistencePort {
 
     private final Connection connection;
-    private final RowMapper rowMapper;
+    private final StudentRowMapper rowMapper;
 
-    public StudentRepositoryDB(Connection connection, RowMapper rowMapper) {
+    public StudentRepositoryDB(Connection connection, StudentRowMapper rowMapper) {
         this.connection = connection;
         this.rowMapper = rowMapper;
     }
@@ -25,7 +26,7 @@ public class StudentRepositoryDB implements StudentPersistencePort {
     @Override
     public Student createStudentRepository(Student student) {
 
-        String sql = "INSERT INTO student (id, name, last_name, email, phone, passwd, status, student_type) VALUES (?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO student (id, name, last_name, email, phone, passw, status_student, student_type) VALUES (?,?,?,?,?,?,?,?)";
         try(PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS)){
 
             setCustomParams(ps, student);
@@ -43,8 +44,18 @@ public class StudentRepositoryDB implements StudentPersistencePort {
     }
 
     @Override
-    public Student getStudentById(int id) {
-        return null;
+    public Optional<Student> getStudentById(int id) {
+        String sql = "SELECT * FROM student WHERE id = ?";
+        try(PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()){
+                return Optional.of(rowMapper.mapRow(rs));
+            }
+        }catch (SQLException e){
+            throw new RuntimeException("Error al obtener estudiante por id", e);
+        }
+        return Optional.empty();
     }
 
     @Override

@@ -2,7 +2,7 @@ package cesde.service;
 
 import cesde.domain.Student;
 import cesde.persistence.repository.StudentRepository;
-import cesde.service.portinput.StudentService;
+import cesde.service.portInput.StudentService;
 import cesde.service.portoutput.StudentPersistencePort;
 import cesde.util.TypeValidator;
 
